@@ -1,0 +1,8 @@
+[build-system]
+requires = [
+    "setuptools>=40.8.0",
+    "wheel",
+    "webob>=1.8.7",
+    "jsonpickle>=2.0.0",
+]
+build-backend = "setuptools.build_meta"
