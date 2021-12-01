@@ -31,7 +31,7 @@ def get_name(request, name):
     return CustomResponse(name)
 ```
 
-You can use a class based handlers:
+You can use a class based handler:
 
 ```python
 from dorton.app import App
@@ -49,7 +49,7 @@ class ClassBasedController:
         return APIResponse(content={"ok": "post worked"}, status_code=HttpStatusCode.OK)
 ````
 
-## Usage like Django project
+## Usage like Django projects
 
 Create the project with: `python -m dorton initproject my_project`
 
@@ -73,7 +73,7 @@ You can add more apps:
 
 `python -m dorton initapp products` 
 
-A new folder with default structure:
+A new app with default structure will be created:
 ```
 my_project/
     products/
@@ -84,4 +84,4 @@ my_project/
     app.py
     settings.py
 ```
-Add the new app to the settings "LIST_APPS" and it will be recognized by dorton.
+Add the new app name to the settings "LIST_APPS" and it will be recognized by dorton.
