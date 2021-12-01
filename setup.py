@@ -1,4 +1,3 @@
-import pathlib
 from setuptools import find_packages, setup
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -19,5 +18,5 @@ setup(
         "Operating System :: OS Independent",
     ],
     long_description=long_description,
-    long_description_content_type='text/markdown'
+    long_description_content_type="text/markdown",
 )

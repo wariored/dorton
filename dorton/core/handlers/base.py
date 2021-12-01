@@ -1,8 +1,13 @@
+import importlib
 import inspect
 from types import FunctionType
 
-from dorton.exceptions import (RouteMethodNotFoundError,
-                               RouteNotFoundError, RouteValueError)
+from dorton.exceptions import (
+    RouteMethodNotFoundError,
+    RouteNotFoundError,
+    RouteValueError,
+)
+from dorton.urls.base import Route
 from parse import parse
 
 
@@ -83,3 +88,22 @@ class HttpHandler:
             return handler
 
         return wrapper
+
+    def register_routes(self):
+        try:
+            settings = importlib.import_module("settings")
+        except ModuleNotFoundError:
+            pass
+        else:
+            # register routes in each app in settings
+            for app_name in settings.LIST_APPS:
+                routes = importlib.import_module(f"{app_name}.routes")
+                for route in routes.patterns:
+                    if not isinstance(route, Route):
+                        raise RouteValueError(
+                            "Each value of the variable patterns should be instance of Route"
+                        )
+                    self._add_route(route.handler, route.path, route.method)
+
+    def register(self):
+        self.register_routes()

@@ -3,7 +3,7 @@ import json
 import jsonpickle
 from webob import Request, Response
 
-from dorton.core.handlers.base import HttpHandler
+from dorton.core.handlers import HttpHandler
 from dorton.exceptions import RouteMethodNotFoundError, RouteNotFoundError
 from dorton.http import APIResponse
 
@@ -44,7 +44,7 @@ class App(HttpHandler):
             except RouteMethodNotFoundError:
                 self._default_response(response)
                 return response
-            
+
             if isinstance(res, APIResponse):
                 response.json = res.toJSON()
                 response.content_type = res.content_type

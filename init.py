@@ -4,6 +4,8 @@ from dorton.http.enums import HttpStatusCode
 
 app = App()
 
+app.register()
+
 
 class CustomResponse:
     def __init__(self) -> None:

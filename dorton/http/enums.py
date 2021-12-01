@@ -1,17 +1,15 @@
 import enum
 
-__all__ = [
-    "HttpStatusCode",
-    "HttpRequestType"
-]
+__all__ = ["HttpStatusCode", "HttpRequestMethod"]
 
-class HttpRequestType(enum.Enum):
+
+class HttpRequestMethod(enum.Enum):
     GET = "GET"
     POST = "POST"
     PUT = "PUT"
     DELETE = "DELETE"
     PATCH = "PATCH"
-    
+
 
 class HttpStatusCode(enum.IntEnum):
     CONTINUE = 100

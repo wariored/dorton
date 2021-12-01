@@ -5,5 +5,6 @@ class RouteValueError(Exception):
 class RouteNotFoundError(Exception):
     pass
 
+
 class RouteMethodNotFoundError(Exception):
     pass

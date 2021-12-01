@@ -3,9 +3,8 @@ import json
 import jsonpickle
 from dorton.http.enums import HttpStatusCode
 
-__all__ = [
-    "APIResponse"
-]
+__all__ = ["APIResponse"]
+
 
 class APIResponse:
     def __init__(

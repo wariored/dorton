@@ -2,6 +2,8 @@ A Python lightweight and fast framework for REST APIs
 
 To get started: `pip install dorton`
 
+## Basic Usage
+
 With function based handlers
 ```python
 from dorton.app import App
@@ -46,3 +48,40 @@ class ClassBasedController:
     def post(self, request):
         return APIResponse(content={"ok": "post worked"}, status_code=HttpStatusCode.OK)
 ````
+
+## Usage like Django project
+
+Create the project with: `python -m dorton initproject my_project`
+
+Default files are created with boilerplates to get started:
+```
+my_project/
+    my_projects/
+        handlers.py
+        models.py
+        routes.py
+    app.py
+    settings.py
+```
+Run the server with: 
+
+`gunicorn app:app --bind=127.0.0.1:8000 --reload`
+
+You can add more apps: 
+
+`cd my_project`
+
+`python -m dorton initapp products` 
+
+A new folder with default structure:
+```
+my_project/
+    products/
+        handlers.py
+        models.py
+        routes.py
+    my_projects
+    app.py
+    settings.py
+```
+Add the new app to the settings "LIST_APPS" and it will be recognized by dorton.
