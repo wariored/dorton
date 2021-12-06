@@ -85,3 +85,26 @@ my_project/
     settings.py
 ```
 Add the new app name to the settings "LIST_APPS" and it will be recognized by dorton.
+
+You can now add a handler in your handlers file:
+```python
+# products/handlers.py
+
+def my_handler(request):
+    res = ["orange", "apple"]
+    return {"result": res}
+```
+
+Add the corresponding route:
+```python
+# products/routes.py
+
+from dorton.urls import Route
+from .handlers import my_handler
+
+patterns = [
+    Route("products/fruits-list", my_handler, method="get", name="fruits-list")
+]
+```
+
+The handler `my_handler` will be hitted whenever your make a GET request through the url `products/fruits-list`.
