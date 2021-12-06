@@ -14,7 +14,6 @@ class App(HttpHandler):
     def __call__(self, environ, start_response):
         request = Request(environ)
         response = self.handle_request(request)
-        response.content_type = DEFAULT_CONTENT_TYPE
         return response(environ, start_response)
 
     def _default_response(self, response):
@@ -28,6 +27,7 @@ class App(HttpHandler):
         :return WSGI response
         """
         response = Response()
+        response.content_type = DEFAULT_CONTENT_TYPE
         path = request.path
 
         try:
